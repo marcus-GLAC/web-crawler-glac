@@ -12,7 +12,6 @@ sudo mkdir -p /opt/web-crawler-glac
 sudo chown $USER:$USER /opt/web-crawler-glac
 
 # Clone repository
-cd /opt
 git clone https://github.com/David-GLAC/web-crawler-glac.git
 cd web-crawler-glac
 
