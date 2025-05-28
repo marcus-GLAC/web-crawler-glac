@@ -1,0 +1,28 @@
+services:
+  web-crawler:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+    volumes:
+      - ./:/app
+      - /app/__pycache__
+    restart: unless-stopped
+    depends_on:
+      - redis
+    networks:
+      - crawler-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - crawler-network
+
+networks:
+  crawler-network:
+    driver: bridge
