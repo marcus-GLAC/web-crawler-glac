@@ -14,6 +14,7 @@ services:
       - redis
     networks:
       - crawler-network
+      - dokploy-network
 
   redis:
     image: redis:7-alpine
@@ -26,3 +27,5 @@ services:
 networks:
   crawler-network:
     driver: bridge
+  dokploy-network:
+    external: true
